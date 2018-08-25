@@ -4,12 +4,17 @@ import com.example.demo.entity.Memo;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface MemoService {
   Optional<Memo> findById(Long id);
 
   Page<Memo> findAll(Pageable page);
+
+  List<Memo> findByDescriptionLike(String description);
+
+  List<Memo> find(Boolean done);
 
   void store(Memo memo);
 

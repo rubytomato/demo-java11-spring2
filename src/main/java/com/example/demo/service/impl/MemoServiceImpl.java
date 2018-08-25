@@ -4,21 +4,28 @@ import com.example.demo.entity.Memo;
 import com.example.demo.repository.MemoRepository;
 import com.example.demo.service.MemoService;
 import lombok.extern.slf4j.Slf4j;
+import org.hibernate.jpa.QueryHints;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Service
 @Slf4j
 public class MemoServiceImpl implements MemoService {
 
   private final MemoRepository memoRepository;
+  private final EntityManager entityManager;
 
-  public MemoServiceImpl(MemoRepository memoRepository) {
+  public MemoServiceImpl(MemoRepository memoRepository, EntityManager entityManager) {
     this.memoRepository = memoRepository;
+    this.entityManager = entityManager;
   }
 
   @Transactional(readOnly = true, timeout = 3)
@@ -31,6 +38,23 @@ public class MemoServiceImpl implements MemoService {
   @Override
   public Page<Memo> findAll(Pageable page) {
     return memoRepository.findAll(page);
+  }
+
+  @Transactional(readOnly = true, timeout = 3)
+  @Override
+  public List<Memo> findByDescriptionLike(String description) {
+    return memoRepository.findByDescriptionLikeOrderByIdDesc(description);
+  }
+
+  @Transactional(readOnly = true, timeout = 3)
+  @Override
+  public List<Memo> find(Boolean done) {
+    try (Stream<Memo> stream = entityManager.createQuery("SELECT m FROM Memo m WHERE m.done = :done ORDER BY m.updated ASC", Memo.class)
+        .setParameter("done", done)
+        .setHint(QueryHints.HINT_FETCH_SIZE, 10)
+        .getResultStream()) {
+      return stream.limit(5).collect(Collectors.toList());
+    }
   }
 
   @Transactional(timeout = 10)

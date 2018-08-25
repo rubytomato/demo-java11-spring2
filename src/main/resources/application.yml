@@ -19,15 +19,20 @@ spring:
       connection-timeout: 10000
       maximum-pool-size: 2
       minimum-idle: 2
+  data:
+    jpa:
+      repositories:
+        enabled: true
+        bootstrap-mode: lazy
   #JPA
   jpa:
     open-in-view: true
     properties:
       hibernate:
-        show_sql: true
-        format_sql: true
-        use_sql_comments: true
-        generate_statistics: false
+        show_sql: false
+        format_sql: false
+        use_sql_comments: false
+        generate_statistics: true
         dialect: org.hibernate.dialect.MySQL8Dialect
   #JACKSON
   jackson:
@@ -35,15 +40,28 @@ spring:
       indent-output: true
       write-dates-as-timestamps: false
       write-durations-as-timestamps: true
+  #DEVTOOLS
+  devtools:
+    livereload:
+      enabled: false
+  #INSIGHTS
+  insights:
+    web:
+      log-request-details: true
 
 #EMBEDDED SERVER CONFIGURATION
 server:
   servlet:
     context-path: /app
   port: 9000
+  error:
+    whitelabel:
+      enabled: true
+  tomcat:
+    max-swallow-size: 2MB
 
 #LOGGING
-logging.file: demo.log
+logging.file: log/demo.log
 logging:
   file:
     max-size: 50MB
@@ -54,3 +72,17 @@ logging:
     org.hibernate: info
     org.hibernate.SQL: debug
     com.example.demo: debug
+
+---
+
+spring:
+  profiles: dev & app1
+server:
+  port: 9001
+
+---
+
+spring:
+  profiles: dev & app2
+server:
+  port: 9002

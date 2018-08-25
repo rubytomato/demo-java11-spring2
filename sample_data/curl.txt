@@ -1,0 +1,7 @@
+curl -v "http://localhost:9000/app/echo2/test?param1=10&param2=abc"
+
+curl -v -d "message=test" -d "param1=123" -d "param2=abc" -X POST "http://localhost:9000/app/echo3"
+
+curl -v -H "Content-Type:application/json" -d @new_memo.json -X POST "http://localhost:9000/app/memo"
+
+curl -v "http://localhost:9000/app/customer/1"

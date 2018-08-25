@@ -24,6 +24,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Memo implements Serializable {
 
+  private static final long serialVersionUID = 6722502492897390144L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
