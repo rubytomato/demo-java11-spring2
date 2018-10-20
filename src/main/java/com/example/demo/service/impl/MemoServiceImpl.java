@@ -59,13 +59,6 @@ public class MemoServiceImpl implements MemoService {
 
   @Transactional(timeout = 10)
   @Override
-  public void update(Memo memo) {
-    memoRepository.findById(memo.getId())
-        .ifPresentOrElse(m -> m.merge(memo), () -> log.info("memo id:{} not found", memo.getId()));
-  }
-
-  @Transactional(timeout = 10)
-  @Override
   public void store(Memo memo) {
     memoRepository.save(memo);
   }
@@ -74,9 +67,14 @@ public class MemoServiceImpl implements MemoService {
   @Override
   public void done(Long id) {
     Optional<Memo> memo = memoRepository.findById(id);
-    memo.ifPresentOrElse(m -> m.setDone(true), () -> {
-      log.info("memo id:{} not found", id);
-    });
+    memo.ifPresentOrElse(m -> m.setDone(true), () -> log.info("memo id:{} not found", id));
+  }
+
+  @Transactional(timeout = 10)
+  @Override
+  public void updateById(Long id, Memo memo) {
+    memoRepository.findById(id)
+        .ifPresentOrElse(m -> m.merge(memo), () -> log.info("memo id:{} not found", id));
   }
 
   @Transactional(timeout = 10)

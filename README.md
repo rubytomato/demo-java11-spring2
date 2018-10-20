@@ -2,16 +2,16 @@
 
 Development environment
 
-* OpenJDK 10.0.2
-* Spring Boot 2.1 M1
-* MySQL 8.0.11
+* OpenJDK 11.0.1
+* Spring Boot 2.1.0 M4
+* MySQL 8.0.12
 * JUnit 5.2.0
 * Maven 3.5.4
 
 ```text
-openjdk version "10.0.2" 2018-07-17
-OpenJDK Runtime Environment 18.3 (build 10.0.2+13)
-OpenJDK 64-Bit Server VM 18.3 (build 10.0.2+13, mixed mode)
+openjdk version "11.0.1" 2018-10-16
+OpenJDK Runtime Environment 18.9 (build 11.0.1+13)
+OpenJDK 64-Bit Server VM 18.9 (build 11.0.1+13, mixed mode)
 ```
 
 ## compile

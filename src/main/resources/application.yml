@@ -45,9 +45,8 @@ spring:
     livereload:
       enabled: false
   #INSIGHTS
-  insights:
-    web:
-      log-request-details: true
+  http:
+    log-request-details: true
 
 #EMBEDDED SERVER CONFIGURATION
 server:
@@ -66,12 +65,16 @@ logging:
   file:
     max-size: 50MB
     max-history: 10
+  group:
+    tomcat: org.apache.catalina, org.apache.coyote, org.apache.tomcat
+    app: com.example.demo
   level:
     root: info
+    tomcat: info
+    app: debug
     org.springframework: info
     org.hibernate: info
     org.hibernate.SQL: debug
-    com.example.demo: debug
 
 ---
 

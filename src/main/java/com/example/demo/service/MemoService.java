@@ -18,9 +18,9 @@ public interface MemoService {
 
   void store(Memo memo);
 
-  void update(Memo memo);
-
   void done(Long id);
+
+  void updateById(Long id, Memo memo);
 
   void removeById(Long id);
 }
