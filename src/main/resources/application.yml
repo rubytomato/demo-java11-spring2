@@ -1,7 +1,7 @@
 # Spring Core
 spring:
   application:
-    name: java 10 with spring-boot 2.1
+    name: java 11 with spring-boot 2.1
   #OUTPUT
   output:
     ansi:
@@ -60,21 +60,17 @@ server:
     max-swallow-size: 2MB
 
 #LOGGING
-logging.file: log/demo.log
-logging:
-  file:
-    max-size: 50MB
-    max-history: 10
-  group:
-    tomcat: org.apache.catalina, org.apache.coyote, org.apache.tomcat
-    app: com.example.demo
-  level:
-    root: info
-    tomcat: info
-    app: debug
-    org.springframework: info
-    org.hibernate: info
-    org.hibernate.SQL: debug
+#logging.file: log/demo.log
+#logging:
+#  file:
+#    max-size: 50MB
+#    max-history: 10
+#  level:
+#    root: info
+#    org.springframework: info
+#    org.hibernate: info
+#    org.hibernate.SQL: debug
+#    com.example.demo: debug
 
 ---
 

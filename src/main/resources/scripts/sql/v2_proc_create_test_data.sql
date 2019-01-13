@@ -387,6 +387,7 @@ BEGIN
    * テストデータ初期化
    */
   BEGIN
+    SET foreign_key_checks = 0;
     TRUNCATE TABLE category;
     TRUNCATE TABLE location;
     TRUNCATE TABLE item;
@@ -394,6 +395,7 @@ BEGIN
     TRUNCATE TABLE customer;
     TRUNCATE TABLE customer_order;
     TRUNCATE TABLE customer_review;
+    SET foreign_key_checks = 1;
   END;
 
 

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -44,6 +45,12 @@ public class MemoServiceImpl implements MemoService {
   @Override
   public List<Memo> findByDescriptionLike(String description) {
     return memoRepository.findByDescriptionLikeOrderByIdDesc(description);
+  }
+
+  @Transactional(readOnly = true, timeout = 3)
+  @Override
+  public List<Memo> findByUpdated(LocalDateTime f, LocalDateTime e) {
+    return memoRepository.findByUpdatedWithMonth(f, e);
   }
 
   @Transactional(readOnly = true, timeout = 3)

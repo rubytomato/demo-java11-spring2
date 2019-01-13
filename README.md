@@ -3,9 +3,9 @@
 Development environment
 
 * OpenJDK 11.0.1
-* Spring Boot 2.1.0 M4
-* MySQL 8.0.12
-* JUnit 5.2.0
+* Spring Boot 2.1.2.RELEASE
+* MySQL 8.0.13
+* JUnit 5.3.2
 * Maven 3.5.4
 
 ```text
