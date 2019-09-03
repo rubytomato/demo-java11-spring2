@@ -59,18 +59,18 @@ server:
   tomcat:
     max-swallow-size: 2MB
 
-#LOGGING
-#logging.file: log/demo.log
-#logging:
-#  file:
-#    max-size: 50MB
-#    max-history: 10
-#  level:
-#    root: info
-#    org.springframework: info
-#    org.hibernate: info
-#    org.hibernate.SQL: debug
-#    com.example.demo: debug
+# LOGGING
+logging.file: log/demo.log
+logging:
+  file:
+    max-size: 50MB
+    max-history: 10
+  level:
+    root: info
+    org.springframework: info
+    org.hibernate: info
+    org.hibernate.SQL: debug
+    com.example.demo: debug
 
 ---
 

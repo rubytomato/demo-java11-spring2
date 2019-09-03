@@ -4,6 +4,8 @@ import com.example.demo.entity.Memo;
 import com.example.demo.repository.MemoRepository;
 import com.example.demo.service.MemoService;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 import org.hibernate.jpa.QueryHints;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -88,6 +90,11 @@ public class MemoServiceImpl implements MemoService {
   @Override
   public void removeById(Long id) {
     memoRepository.deleteById(id);
+  }
+
+  @Override
+  public String toString() {
+    return ToStringBuilder.reflectionToString(this, ToStringStyle.DEFAULT_STYLE);
   }
 
 }
